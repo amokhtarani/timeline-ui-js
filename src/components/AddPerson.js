@@ -14,11 +14,21 @@ const AddPerson = ({onAdd}) => {
     const [nationality, setNationality] = useState('')
     const [tag, setTag] = useState('')
     const [comments, setComments] = useState('')
+    const [dobera, setDobera] = useState('')
+    const [dodera, setDodera] = useState('')
     
     const onSubmit = (e) => {
         e.preventDefault()
     
-        onAdd({title,categories,dateOfBirth,dateOfDeath,
+        console.log('dodera: ' + dodera);
+        if(dodera == 'BCE'){
+             setDateOfDeath(-dateOfDeath);
+             console.log('dateOfDeath: ' + dateOfDeath);
+            }
+        if(dobera == 'BCE')setDateOfBirth(-dateOfBirth);
+       
+
+        onAdd({title,categories,dateOfBirth, dobera, dateOfDeath, dodera,
             description,comments,tag,related, name, nationality});
 
     setTitle('');
@@ -31,7 +41,19 @@ const AddPerson = ({onAdd}) => {
     setComments('');
     setNationality('');
     setName('');
+    setDobera('');
+    setDodera('');
     }
+
+    const handleDoderaChange = (e => {
+        setDodera(e.target.value);
+      //  if(e.target.value == 'BCE') setDateOfDeath(-dateOfDeath);
+    });
+
+    const handleDoberaChange = (e => {
+        setDobera(e.target.value);
+     //   if(e.target.value == 'BCE') setDateOfBirth(-dateOfBirth);
+    });
 
   return (
      <div>
@@ -73,20 +95,77 @@ const AddPerson = ({onAdd}) => {
         <label>Year of Birth</label>
         <input
             type='text'
-            placeholder='Year of Birth (e.g. 1267 CE, 126 BC )'
+            placeholder='Year of Birth '
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
         />
         </div>
+        <div>
+        <label>
+            <input
+                name="dobera"
+                type="radio"
+                className="radio"
+                
+                id="BC"
+                value="BCE"
+                onChange={(e) => setDodera(e.target.value)}
+                />
+                BCE               
+        </label>
+        </div>
+        <div>
+        <label>
+            <input
+                name="dobera"
+                type="radio"
+                id="CE"
+                value="CE"
+              
+                className="radio"
+                onChange={handleDoberaChange}
+                />
+                CE               
+        </label>
+       </div>
+
+
         <div className='form-control'>
         <label>Year of Death</label>
         <input
             type='text'
-            placeholder='Year of Death (e.g. 1267 CE, 126 BC )'
+            placeholder='Year of Death '
             value={dateOfDeath}
             onChange={(e) => setDateOfDeath(e.target.value)}
         />
         </div>
+        <div>
+        <label>
+            <input
+                name="dodera"
+                type="radio"
+                className="radio"
+                
+                id="BC"
+                value="BCE"
+                onChange={handleDoderaChange}
+                />
+                BCE               
+        </label>
+        </div><div>
+        <label>
+            <input
+                name="dodera"
+                type="radio"
+                id="CE"
+                value="CE"
+                
+                className="radio"
+                onChange={handleDoderaChange}
+                />
+                CE               
+        </label>
+       </div>
 
         <div className='form-control'>
         <label>Nationality </label>
@@ -109,8 +188,8 @@ const AddPerson = ({onAdd}) => {
 
         <div className='form-control'>
         <label>Description</label>
-        <input
-            type='textArea'
+        <textarea
+            
             placeholder='Description of the person'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -119,8 +198,8 @@ const AddPerson = ({onAdd}) => {
 
         <div className='form-control'>
         <label>Comments</label>
-        <input
-            type='text'
+        <textarea
+            
             placeholder='Comments'
             value={comments}
             onChange={(e) => setComments(e.target.value)}

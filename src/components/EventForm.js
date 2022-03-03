@@ -66,7 +66,7 @@ const EventForm = ({onAdd}) => {
 
         <div className='form-control'>
         <label>Description</label>
-        <input
+        <textarea
             {   ...register("description")}  
             type='textArea'
             placeholder='Description of event'
@@ -76,7 +76,7 @@ const EventForm = ({onAdd}) => {
 
         <div className='form-control'>
         <label>Comments</label>
-        <input
+        <textarea
             {   ...register("comments")}  
             type='text'
             placeholder='Comments'

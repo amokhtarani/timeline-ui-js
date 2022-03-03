@@ -9,12 +9,15 @@ const Accordion = ({ title, content, item}) => {
   const location = useLocation();
   const params = JSON.parse(content)._id;
   const formToUpdate = item === 'person' ?  `/PersonForm/${params}` : `/EventForm/${params}`;
-  //console.log(formToUpdate);
 
   const   handleClick = (e) => {
     e.preventDefault();
     navigate(formToUpdate, {state:{data:content}});
   }; 
+  const body = JSON.parse(content);
+  const heading = body.title ? body.title : body.eventTitle;
+  const dates = body.dateOfEvent ? body.dateOfEvent : body.dateOfBirth + ' - ' + body.dateOfDeath;
+  
   return (
     
     <div className="accordion-item">
@@ -25,7 +28,11 @@ const Accordion = ({ title, content, item}) => {
         <div>{title} </div>
         <div>{isActive ? '-' : '+'}</div>
       </div>
-      {isActive && <div className="accordion-content">{content}</div>}
+      {isActive && <div className="accordion-content">{heading}<br />
+      {dates} <br /> {body.description} 
+      <br /> {body.comments}
+      
+      </div>}
     </div>
     
   );

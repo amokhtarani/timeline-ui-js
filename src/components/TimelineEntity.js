@@ -26,7 +26,7 @@ const TimelineEntity = ({timeline}) => {
       ApiProvider.getEventById(timeline.id)
           .then(response=> {
       //       console.log('Response: ' + JSON.stringify(response));
-          setEvent(response[0]);
+     //     setEvent(response[0]);
          navigate(`/EventForm/${timeline.id}`, {state:{data:JSON.stringify(response[0])}});
         });
      }; 
@@ -37,7 +37,7 @@ const TimelineEntity = ({timeline}) => {
       ApiProvider.getPersonById(timeline.id)
           .then(response=> {
  //            console.log('Response: ' + JSON.stringify(response));
-          setPerson(response[0]);
+      //    setPerson(response[0]);
          navigate(`/PersonForm/${timeline.id}`, {state:{data:JSON.stringify(response[0])}});
         });
      }; 
@@ -58,7 +58,7 @@ const TimelineEntity = ({timeline}) => {
           <TimelineSeparator>
             <TimelineDot />
             <TimelineConnector />
-          </TimelineSeparator>
+          </TimelineSeparator> 
            <TimelineContent>
            <Link to={formToUpdate} onClick={handleClick}> {timeline.title} </Link> 
            </TimelineContent>

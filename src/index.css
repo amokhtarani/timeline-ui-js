@@ -11,8 +11,8 @@ body {
 }
 
 .container {
-  max-width: 500px;
-  margin: 30px auto;
+  max-width: 100px;
+  margin: 10px auto;
   overflow: auto;
   min-height: 300px;
   border: 1px solid steelblue;
@@ -109,4 +109,7 @@ body {
 footer {
   margin-top: 30px;
   text-align: center;
+}
+.radio {
+  margin:0.5em 1em 0 0;
 }

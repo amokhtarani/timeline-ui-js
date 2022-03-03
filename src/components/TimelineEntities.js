@@ -3,12 +3,12 @@ import TimelineEntity from './TimelineEntity'
 
 
 const TimelineEntities=({timelines}) => {
-  //sort the entries on year
-timelines.sort((a,b) => (Number(a.year.split(" ")[0]) > Number(b.year.split(" ")[0]))?1 : -1);
+  //sort the entries on year  
+ timelines.sort((a,b) => (Number(a.year) > Number(b.year))?1 : -1);
 
 timelines.sort((a,b) => {
-     if( Number(a.year.split(" ")[0]) === Number(b.year.split(" ")[0])){
-      a.text += ", " + b.text;       
+  if( Number(a.year) === Number(b.year)){
+    a.text += ", " + b.text;       
       timelines = timelines.filter((item => item !== a));
     } 
     return timelines;

@@ -11,11 +11,12 @@ const AddEvent = ({onAdd}) => {
     const [description, setDescription] = useState('')
     const [tag, setTag] = useState('')
     const [comments, setComments] = useState('')
+    const [era, setEra] = useState('')
     
     const onSubmit = (e) => {
         e.preventDefault()
     
-        onAdd({eventTitle,categories,dateOfEvent,description,comments,tag,related});
+        onAdd({eventTitle,categories,dateOfEvent, era ,description,comments,tag,related});
 
     setEventTitle('');
     setCategories('');
@@ -24,6 +25,7 @@ const AddEvent = ({onAdd}) => {
     setDescription('');
     setTag('');
     setComments('');
+    setEra('');
     }
 
   return (
@@ -57,11 +59,39 @@ const AddEvent = ({onAdd}) => {
         <label>Year of Event</label>
         <input
             type='text'
-            placeholder='Year of Event (e.g. 1267 CE, 126 BC )'
+            placeholder='Year of Event '
             value={dateOfEvent}
             onChange={(e) => setYear(e.target.value)}
         />
         </div>
+        <div>
+        <label>
+            <input
+                name="era"
+                type="radio"
+                className="radio"
+                
+                id="BC"
+                value="BCE"
+                onChange={(e) => setEra(e.target.value)}
+                />
+                BCE               
+        </label>
+        </div>
+        <div>
+        <label>
+            <input
+                name="era"
+                type="radio"
+                id="CE"
+                value="CE"
+              
+                className="radio"
+                onChange={(e) => setEra(e.target.value)}
+                />
+                CE               
+        </label>
+       </div>
 
         <div className='form-control'>
         <label>Related Events</label>
@@ -75,8 +105,8 @@ const AddEvent = ({onAdd}) => {
 
         <div className='form-control'>
         <label>Description</label>
-        <input
-            type='textArea'
+        <textarea
+           
             placeholder='Description of event'
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -85,8 +115,8 @@ const AddEvent = ({onAdd}) => {
 
         <div className='form-control'>
         <label>Comments</label>
-        <input
-            type='text'
+        <textarea
+            type='textarea'
             placeholder='Comments'
             value={comments}
             onChange={(e) => setComments(e.target.value)}

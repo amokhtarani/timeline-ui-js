@@ -35,8 +35,7 @@ return res.data;
    const url = serverName + 'api/timeline';
    const res = await axios.get(url);
    
-   //console.log(res.data);
-   return res.data;
+    return res.data;
  }
  
  //add person
@@ -51,8 +50,7 @@ return res.data;
      }
     });
    const data = await res.data;
-   //console.log(data);
-   return data;
+    return data;
  }
  
  //update person
@@ -69,7 +67,6 @@ return res.data;
     }
    });
   const data = await res.data;
-  //console.log(data);
   return data;
 
 
@@ -91,10 +88,9 @@ return res.data;
  }
 //update event
 async function updateEvent(event) {
-  console.log(JSON.stringify(event));
-  const id = event._id;
+   const id = event._id;
  const url = serverName + `api/events?id=${id}`
- console.log(url);
+ //console.log(url);
  const res = await axios(url,  {
    method:'PUT',
    data: JSON.stringify(event),
@@ -103,7 +99,6 @@ async function updateEvent(event) {
    }
   });
  const data = await res.data;
- //console.log(data);
  return data;
 }
   //edit event
